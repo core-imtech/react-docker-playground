@@ -17,6 +17,14 @@ jobs:
     - name: "Checkout"
       uses: actions/checkout@v4
 
+    # Login ke GitHub Container Registry
+    - name: "Login to GHCR"
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
       # Build image pakai Dockerfile lo
     - name: "Build Docker image"
       run: |
