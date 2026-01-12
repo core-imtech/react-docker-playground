@@ -1,0 +1,31 @@
+name: React Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v4
+
+      # Build image pakai Dockerfile lo
+    - name: "Build Docker image"
+      run: |
+        docker build \
+          -t ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')/react-docker-playground:latest \
+          .
+
+    # Push image ke GHCR
+    - name: Push Docker image
+      run: |
+        docker push \
+          ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')/react-docker-playground:latest
