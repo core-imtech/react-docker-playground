@@ -21,8 +21,10 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={(e) => handleLogin(e)} className="flex-row bg-amber-200">
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
+      <form onSubmit={(e) => handleLogin(e)} className="flex-row bg-slate-400">
         <label htmlFor="roleOptions">Role</label>
         <select name="role" id="roleOptions">
           <option value="admin">Admin</option>
