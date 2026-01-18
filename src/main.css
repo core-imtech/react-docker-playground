@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg-canvas: #F4F3FE;
+  --color-bg-secondary: #F5F7FA;
+  --color-bg-white: #fff;
+  --color-bg-disabled-field: #EDEFF3;
+
+  --color-border: #E2EAF1;
+
+  --color-primary-font: #111827;
+  --color-secondary-font: #475569;
+  --color-disabled-font: #D1D5DB;
+  --color-muted-font: #6B7280;
+
+  --color-main: #1A9CDA;
+  --color-main-hover: #1689BE;
+  --color-main-active: #0F6FA0;
+  --color-main-accent: #1A9CDA;
+  --color-main-accent-soft: #E8F6FC;
+
+  --color-soft-bg-row-hover: #E8F6FC;
+
+  --color-success-main: #22C55E;
+  --color-success-text: #166534;
+  --color-success-bg-subtle: #DCFCE7;
+
+  --color-warning-main: #F59E0B;
+  --color-warning-text: #92400E;
+  --color-warning-bg-subtle: #FEF3C7;
+
+  --color-danger-main: #EF4444;
+  --color-danger-text: #7F1D1D;
+  --color-danger-bg-subtle: #FEE2E2;
+
+  --shadow-surface-card-default: 0 2px 8px rgba(47, 72, 85, 0.06);
+  --shadow-hover-floating: 0 5px 20px rgba(47, 72, 85, 0.1);
+  --shadow-modal-overlay: 0 14px 38px rgba(47, 72, 85, 0.16);
+
+  --radius-card: 12px;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+}
+
+html {
+  color: #111827;
+}
