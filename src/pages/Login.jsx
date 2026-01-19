@@ -1,17 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import { LoginAccount } from "../utils/fakeAuth";
+import { useState } from "react";
+
+import { LoginAccount } from "@/utils/fakeAuth";
+
+import IMAGES from '@/assets/img/authPage/index'
+
+import { logo2 } from "@/assets";
 
 const Login = () => {
+  // Set random image
+  const [authPlaceholderImage] = useState(
+    () => IMAGES[Object.keys(IMAGES)[Math.floor(Math.random() * Object.keys(IMAGES).length)]]
+  );
+
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    console.log('event :>> ', e);
-
-    const role = e.target.role.value;
-
-    LoginAccount({ role });
+  const handleLogin = () => {
+    LoginAccount({ role: 'admin' });
 
     setTimeout(() => {
       console.log("loading...");
@@ -20,20 +25,37 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h1 className="text-2xl font-bold underline bg-mint-500 text-danger-abis">
-        Hello world!
-      </h1>
-      <form onSubmit={(e) => handleLogin(e)} className="flex-row bg-slate-400">
-        <label htmlFor="roleOptions">Role</label>
-        <select name="role" id="roleOptions">
-          <option value="admin">Admin</option>
-          <option value="user">User</option>
-        </select>
+    <div className="h-screen flex">
+      <div className="flex-1 overflow-hidden">
+        <img
+          src={authPlaceholderImage}
+          className="object-cover object-center w-full h-full"
+        />
+      </div>
+      <div className="flex-1 flex flex-col items-center justify-center gap-10">
+        <div className="flex flex-col items-center gap-4">
+          <img src={logo2} alt="logo" className="w-[320px]" />
+          <p className="text-lg">Masuk untuk melanjutkan</p>
+        </div>
 
-        <button type="submit">Login</button>
-      </form>
-    </>
+        <div className="w-94 flex flex-col gap-4">
+          <div className="h-21 bg-amber-100">Input 1</div>
+          <div className="h-21 bg-amber-100">Input 2</div>
+          <div className="h-21 bg-amber-100">Input 3</div>
+        </div>
+
+        <div className="flex flex-col items-center gap-6">
+          <p>Belum memiliki akun COREIMTECH? <span className="font-medium text-main">Daftar</span></p>
+          <button
+            type="submit"
+            onClick={() => handleLogin()}
+            className="bg-main p-2 px-4 rounded-md text-white"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
