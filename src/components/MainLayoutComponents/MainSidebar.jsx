@@ -1,11 +1,11 @@
 
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { LogoutAccount } from "@/utils/fakeAuth";
 
 import { logo, miniLogo, accountDummy } from "@/assets";
 
-import { MdOutlineFlip } from 'react-icons/md'
+import { MdDashboard, MdOutlineFlip } from 'react-icons/md'
 
 import { useEffect, useState } from "react";
 
@@ -37,7 +37,7 @@ const MainSidebar = () => {
 
   return (
     <aside
-      className={`${isSidebarExpand ? "w-[256px]" : "w-18"} h-screen flex flex-col bg-white transition-[width] duration-200 ease-in-out`}
+      className={`${isSidebarExpand ? "w-[256px]" : "w-18"} h-screen flex flex-col bg-white transition-[width] duration-200 ease-in-out shadow-surface-card-default`}
       onClick={() => {
         if (!isSidebarExpand) setIsSidebarExpand(true);
       }}
@@ -50,7 +50,7 @@ const MainSidebar = () => {
               <img
                 src={logo}
                 alt="imtech-logo"
-                className="w-34"
+                className="w-34 cursor-pointer"
                 onClick={() => navigate("/")}
               />
               <div
@@ -76,7 +76,6 @@ const MainSidebar = () => {
           )
       }
 
-
       {/* Sidebar Body */}
       {
         isLoading
@@ -89,14 +88,20 @@ const MainSidebar = () => {
                     const Icon = getNavItemIcon(item.icon);
 
                     return (
-                      <div
+                      <NavLink
+                        to={item.path}
                         key={index}
-                        className="hover:bg-border rounded-md py-2 px-3 flex items-center gap-2 text-secondary-font cursor-pointer"
-                        onClick={() => navigate(item.path)}
+                        className={
+                          ({ isActive }) => {
+                            if (isActive) return 'bg-main hover:bg-main-hover text-white rounded-md py-2 px-3 flex items-center gap-2 font-medium  cursor-pointer'
+
+                            return 'hover:bg-border text-secondary-font rounded-md py-2 px-3 flex items-center gap-2  cursor-pointer'
+                          }
+                        }
+                        end
                       >
-                        {Icon ? <Icon size={20} /> : null}
-                        {isSidebarExpand ? <p className="font-medium text-sm">{item.title}</p> : null}
-                      </div>
+                        {Icon ? <Icon size={20} /> : null}{isSidebarExpand ? <p className="font-medium text-sm">{item.title}</p> : null}
+                      </NavLink>
                     )
                   })
                   : null

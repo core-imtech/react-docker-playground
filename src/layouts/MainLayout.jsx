@@ -9,7 +9,7 @@ const MainLayout = () => {
       <div className="flex bg-bg-canvas">
         <MainSidebar />
 
-        <div className="flex-1 h-screen p-4 flex flex-col gap-6 border-2">
+        <div className="flex-1 h-screen p-4 flex flex-col gap-6">
           <MainHeader />
 
           <main className="flex-1 p-4 rounded-card shadow-surface-card-default bg-bg-white">

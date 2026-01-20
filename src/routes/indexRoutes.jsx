@@ -4,6 +4,12 @@ import MainLayout from "../layouts/MainLayout";
 import Dashboard from "../pages/Dashboard";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Unauthorized from "../pages/Unauthorized";
+import MitraPage from "../pages/MitraPage";
+import KlienPage from "../pages/KlienPage";
+import LogistikPage from "../pages/LogistikPage";
+import TimProyekPage from "../pages/TimProyekPage";
+import KaryawanPage from "../pages/KaryawanPage";
+import ProyekPage from "../pages/ProyekPage";
 
 export default function AppRoutes() {
     return (
@@ -55,6 +61,36 @@ export default function AppRoutes() {
                 <Route
                     path="/dashboard"
                     element={<Dashboard />}
+                />
+
+                <Route
+                    path="/proyek"
+                    element={<ProyekPage />}
+                />
+
+                <Route
+                    path="/mitra"
+                    element={<MitraPage />}
+                />
+
+                <Route
+                    path="/klien"
+                    element={<KlienPage />}
+                />
+
+                <Route
+                    path="/logistik"
+                    element={<LogistikPage />}
+                />
+
+                <Route
+                    path="/tim-proyek"
+                    element={<TimProyekPage />}
+                />
+
+                <Route
+                    path="/karyawan"
+                    element={<KaryawanPage />}
                 />
             </Route>
 
